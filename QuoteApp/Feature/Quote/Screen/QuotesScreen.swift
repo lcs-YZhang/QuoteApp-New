@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct QuotesScreen: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        List {
+            ForEach(Quote.dummyData, id: \.anime) { item in
+                VStack(alignment: .leading,
+                       spacing: 8) {
+                    HStack {
+                        Image(systemName: "tv")
+                            .font(.system(size: 12, weight: .black))
+                        Text(item.anime)
+                    }
+                    
+                    Text(makeAttributedString(title: "Character", label: item.character))
+                    Text(makeAttributedString(title: "Quotes", label: item.quote))
+                        .lineLimit(2)
+                }
+                .padding()
+                .foregroundColor(.black)
+            }
+        }
+        
     }
 }
 
